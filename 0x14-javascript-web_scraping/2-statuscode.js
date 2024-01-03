@@ -9,4 +9,3 @@ request.get(url).on('response', function (response) {
   // Display the status code
   console.log(`code: ${response.statusCode}`);
 });
-
