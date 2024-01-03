@@ -1,33 +1,20 @@
 #!/usr/bin/node
-
 const request = require('request');
-
-// Get the Movie ID from the command line argument
-const movieID = process.argv[2];
-
-// URL for the Star Wars API
-const apiUrl = 'https://swapi-api.hbtn.io/api/films/';
-
-// Make a GET request to the specified API endpoint for movie details
-request.get(apiUrl + movieID, function (error, response, body) {
-  if (error) {
-    console.log(error);
-  }
-
-  // Parse the JSON response for movie details
-  const movieData = JSON.parse(body);
-  const characterUrls = movieData.characters;
-
-  // Iterate through each character URL
-  for (const characterUrl of characterUrls) {
-    // Make a GET request to fetch each character's details
-    request.get(characterUrl, function (error, response, characterBody) {
-      if (error) {
-        console.log(error);
-      }
-      // Parse the JSON response for each character
-      const characterData = JSON.parse(characterBody);
-      console.log(characterData.name);
-    });
+const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
+request(url, function (error, response, body) {
+  if (!error) {
+    const characters = JSON.parse(body).characters;
+    printCharacters(characters, 0);
   }
 });
+
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
