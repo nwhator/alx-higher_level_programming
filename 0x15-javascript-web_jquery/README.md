@@ -78,4 +78,4 @@ This repository is a comprehensive collection of JavaScript scripts that focus o
 
 ## Directory: 0x15-javascript-web_jquery
 
-All exercises are organized in the `0x15-javascript-web_jquery` directory. Dive into each exercise's respective directory to find the HTML files and JavaScript scripts for practice. Happy coding! ð¥ï¸â¨
+All exercises are organized in the `0x15-javascript-web_jquery` directory. Dive into each exercise's respective directory to find the HTML files and JavaScript scripts for practice. Happy coding! 🖥️✨
